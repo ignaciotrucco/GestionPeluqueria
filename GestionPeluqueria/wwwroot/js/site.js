@@ -2,3 +2,19 @@
 // for details on configuring this project to bundle and minify static web assets.
 
 // Write your JavaScript code.
+
+document.addEventListener("DOMContentLoaded", function () {
+
+    const sidebarToggle = document.getElementById("sidebarToggle");
+
+    if (sidebarToggle) {
+
+        sidebarToggle.addEventListener("click", function () {
+
+            document.getElementById("wrapper").classList.toggle("toggled");
+
+        });
+
+    }
+
+});

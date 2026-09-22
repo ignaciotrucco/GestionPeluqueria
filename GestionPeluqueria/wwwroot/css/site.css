@@ -1,4 +1,4 @@
-html {
+/* html {
   font-size: 14px;
 }
 
@@ -19,4 +19,46 @@ html {
 
 body {
   margin-bottom: 60px;
+} */
+
+/* Y en tu site.css agregaría el CSS necesario para que funcione el comportamiento de abrir/cerrar: */
+
+#wrapper {
+min-height: 100vh;
+}
+
+#sidebar-wrapper {
+min-height: 100vh;
+width: 250px;
+margin-left: 0;
+transition: margin 0.25s ease-out;
+}
+
+#page-content-wrapper {
+width: 100%;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+margin-left: -250px;
+}
+
+.sidebar-heading {
+padding: 0.875rem 1.25rem;
+font-size: 1.2rem;
+}
+
+.list-group-item {
+border: none;
+}
+
+@media (max-width: 768px) {
+
+#sidebar-wrapper {
+margin-left: -250px;
+}
+
+#wrapper.toggled #sidebar-wrapper {
+margin-left: 0;
+}
+
 }

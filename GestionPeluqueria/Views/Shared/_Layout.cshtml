@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+﻿@* <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -13,7 +13,8 @@
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
                 <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">GestionPeluqueria</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse"
+aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -47,4 +48,121 @@
     <script src="~/js/site.js" asp-append-version="true"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+</html> *@
+
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>@ViewData["Title"] - GestionPeluqueria</title>
+
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/GestionPeluqueria.styles.css" asp-append-version="true" />
+
+</head>
+
+<body>
+
+    <div class="d-flex" id="wrapper">
+
+        <!-- Sidebar -->
+        <div class="border-end bg-white" id="sidebar-wrapper">
+
+            <div class="sidebar-heading border-bottom bg-light">
+                GestionPeluqueria
+            </div>
+
+            <div class="list-group list-group-flush">
+
+                <a asp-controller="Home" asp-action="Index"
+                   class="list-group-item list-group-item-action list-group-item-light p-3">
+                    Inicio
+                </a>
+
+                <a asp-controller="Clientes" asp-action="Index"
+                   class="list-group-item list-group-item-action list-group-item-light p-3">
+                    Clientes
+                </a>
+
+                <a asp-controller="Servicios" asp-action="Index"
+                   class="list-group-item list-group-item-action list-group-item-light p-3">
+                    Servicios
+                </a>
+
+                <a asp-controller="Turnos" asp-action="Index"
+                   class="list-group-item list-group-item-action list-group-item-light p-3">
+                    Turnos
+                </a>
+
+            </div>
+
+        </div>
+        <!-- Fin Sidebar -->
+
+
+        <!-- Page content -->
+        <div id="page-content-wrapper">
+
+            <!-- Navbar -->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+
+                <div class="container-fluid">
+
+                    <button class="btn btn-primary" id="sidebarToggle">
+                        Menú
+                    </button>
+
+                    <div class="ms-auto">
+                        <partial name="_LoginPartial" />
+                    </div>
+
+                </div>
+
+            </nav>
+            <!-- Fin Navbar -->
+
+
+            <!-- Contenido -->
+            <div class="container-fluid">
+
+                <main role="main" class="pb-3">
+
+                    @RenderBody()
+
+                </main>
+
+            </div>
+            <!-- Fin Contenido -->
+
+
+            <!-- Footer -->
+            <footer class="border-top footer text-muted">
+
+                <div class="container-fluid">
+
+                    &copy; 2026 - GestionPeluqueria
+
+                </div>
+
+            </footer>
+
+        </div>
+        <!-- Fin Page content -->
+
+    </div>
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+
+</body>
+
 </html>
