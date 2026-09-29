@@ -24,41 +24,147 @@ body {
 /* Y en tu site.css agregaría el CSS necesario para que funcione el comportamiento de abrir/cerrar: */
 
 #wrapper {
-min-height: 100vh;
+  min-height: 100vh;
 }
 
+/* SIDEBAR */
 #sidebar-wrapper {
-min-height: 100vh;
-width: 250px;
-margin-left: 0;
-transition: margin 0.25s ease-out;
+  min-height: 100vh;
+  width: 190px;
+  margin-left: 0;
+  transition: margin 0.25s ease-out;
+  background-color: #101a2b;
+  display: flex;
+  flex-direction: column;
 }
 
+/* LOGO */
+.sidebar-logo {
+  height: 90px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-logo img {
+  max-width: 145px;
+  max-height: 65px;
+  object-fit: contain;
+}
+
+/* MENU */
+.sidebar-menu {
+  padding: 20px 14px;
+  flex: 1;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  height: 48px;
+  padding: 0 15px;
+  margin-bottom: 8px;
+
+  color: #ffffff;
+  text-decoration: none;
+
+  border-radius: 7px;
+
+  font-size: 14px;
+  font-weight: 500;
+
+  transition: all 0.2s ease;
+}
+
+.sidebar-item:hover {
+  color: #ffffff;
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-item.active {
+  background: linear-gradient(90deg, #6425d8, #752de6);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(103, 40, 220, 0.3);
+}
+
+.sidebar-icon {
+  width: 20px;
+  text-align: center;
+  font-size: 19px;
+}
+
+/* USUARIO */
+.sidebar-user {
+  min-height: 75px;
+  padding: 12px 15px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.user-avatar {
+  width: 36px;
+  height: 36px;
+
+  border-radius: 50%;
+
+  background-color: #f1f3f7;
+  color: #273348;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.user-info {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+  flex: 1;
+}
+
+.user-info strong {
+  color: white;
+  font-size: 12px;
+}
+
+.user-info small {
+  color: #aeb6c5;
+  font-size: 10px;
+  margin-top: 3px;
+}
+
+.user-arrow {
+  color: white;
+  font-size: 16px;
+}
+
+/* CONTENIDO */
 #page-content-wrapper {
-width: 100%;
+  width: 100%;
 }
 
 #wrapper.toggled #sidebar-wrapper {
-margin-left: -250px;
+  margin-left: -190px;
 }
 
-.sidebar-heading {
-padding: 0.875rem 1.25rem;
-font-size: 1.2rem;
-}
-
-.list-group-item {
-border: none;
-}
-
+/* RESPONSIVE */
 @media (max-width: 768px) {
 
-#sidebar-wrapper {
-margin-left: -250px;
-}
+  #sidebar-wrapper {
+    margin-left: -190px;
+  }
 
-#wrapper.toggled #sidebar-wrapper {
-margin-left: 0;
-}
+  #wrapper.toggled #sidebar-wrapper {
+    margin-left: 0;
+  }
 
 }

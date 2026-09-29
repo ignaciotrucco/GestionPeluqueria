@@ -63,6 +63,7 @@ aria-controls="navbarSupportedContent"
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/GestionPeluqueria.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 
 </head>
 
@@ -71,34 +72,35 @@ aria-controls="navbarSupportedContent"
     <div class="d-flex" id="wrapper">
 
         <!-- Sidebar -->
-        <div class="border-end bg-white" id="sidebar-wrapper">
+        <div id="sidebar-wrapper">
 
-            <div class="sidebar-heading border-bottom bg-light">
-                GestionPeluqueria
+            <!-- Logo -->
+            <div class="sidebar-logo">
+                <img src="~/img/logoPame1.png" alt="Pame Comba Salón">
             </div>
 
-            <div class="list-group list-group-flush">
+            <!-- Menú -->
+            <div class="sidebar-menu">
 
-                <a asp-controller="Home" asp-action="Index"
-                   class="list-group-item list-group-item-action list-group-item-light p-3">
-                    Inicio
+                <a asp-controller="Home" asp-action="Index" class="sidebar-item active">
+                    <span class="sidebar-icon"><i class="fa-solid fa-house"></i></span>
+                    <span>Inicio</span>
                 </a>
 
-                <a asp-controller="Clientes" asp-action="Index"
-                   class="list-group-item list-group-item-action list-group-item-light p-3">
-                    Clientes
+                <a asp-controller="Turnos" asp-action="Index" class="sidebar-item">
+                    <span class="sidebar-icon"><i class="fa-solid fa-calendar-days"></i></span>
+                    <span>Turnos</span>
                 </a>
 
-                <a asp-controller="Servicios" asp-action="Index"
-                   class="list-group-item list-group-item-action list-group-item-light p-3">
-                    Servicios
+                <a asp-controller="Clientes" asp-action="Index" class="sidebar-item">
+                    <span class="sidebar-icon"><i class="fa-solid fa-users"></i></span>
+                    <span>Clientes</span>
                 </a>
 
-                <a asp-controller="Turnos" asp-action="Index"
-                   class="list-group-item list-group-item-action list-group-item-light p-3">
-                    Turnos
+                <a asp-controller="Servicios" asp-action="Index" class="sidebar-item">
+                    <span class="sidebar-icon"><i class="fa-solid fa-scissors"></i></span>
+                    <span>Servicios</span>
                 </a>
-
             </div>
 
         </div>

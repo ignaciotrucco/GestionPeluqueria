@@ -60,6 +60,14 @@ app.UseAuthorization();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+    // Ruta para manejar URLs inexistentes (fallback)
+app.MapFallback(context =>
+{
+    context.Response.Redirect("/Error/NotFoundView");
+    return Task.CompletedTask;
+});
+
 app.MapRazorPages();
 
 app.Run();
