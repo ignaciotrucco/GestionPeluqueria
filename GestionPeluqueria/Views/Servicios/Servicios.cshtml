@@ -19,55 +19,70 @@
 </div>
 
 <!-- Modal -->
-<div class="modal fade" id="modalProvincias" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
+<div class="modal fade" id="modalServicios" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true"
      id="staticBackdrop" data-bs-backdrop="static">
     <div class="modal-dialog">
-        <div class="modal-content centrarModalCelular">
+        <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title" id="tituloModal"></h5>
             </div>
             <div class="modal-body">
                 <div class="row">
-                    <div class="d-flex">
+                    @* <div class="d-flex">
                         <p class="campoObligatorio">Los campos marcados con un asterisco (<span
                             class="asterisco">*</span>) son obligatorios</p>
-                            @* <p class="asterisco" style="padding-left:0 !important;padding-right: 0 !important;">*</p>
-                        <p class="campoObligatorio">) son obligatorios </p> *@
+                            <p class="asterisco" style="padding-left:0 !important;padding-right: 0 !important;">*</p>
+                            <p class="campoObligatorio">) son obligatorios </p>
+                        </div> *@
+                    <form>
+                        <div class="col-md-10" style="width: auto !important;">
+                            <input type="hidden" id="ServicioID">
+
+                            <label for="NombreServicio" class="form-label d-flex mb-1">
+                                Nombre<p class="asterisco">*</p>
+                            </label>
+                            <input type="text" class="form-control mb-3" id="NombreServicio"
+                                   style="text-transform:uppercase">
+                            <span id="NombreError" class="textoError"></span>
+
+                            <label for="DescripcionServicio" class="form-label d-flex mb-1">
+                                Descripción<p class="asterisco">*</p>
+                            </label>
+                            <input type="text" class="form-control mb-3" id="DescripcionServicio"
+                                   style="text-transform:uppercase">
+                            <span id="DescripcionError" class="textoError"></span>
+
+                            <label for="PrecioServicio" class="form-label d-flex mb-1">
+                                Precio<p class="asterisco">*</p>
+                            </label>
+                            <input type="number" class="form-control mb-3" id="PrecioServicio" step="0.01" min="0">
+                            <span id="PrecioError" class="textoError"></span>
                         </div>
-                        <form>
-                            <div class="col-md-10 mb-10" style="width: auto !important;">
-                                <input type="hidden" id="ProvinciaID">
-                                <label for="NombreProvincia" class="form-label d-flex">Nombre<p class="asterisco">*</p>
-                                </label>
-                                <input type="text" class="form-control" id="NombreProvincia"
-                                       style="text-transform:uppercase">
-                                <span id="NombreError" class="textoError"></span>
-                            </div>
-                        </form>
-                    </div>
+                    </form>
                 </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btnGuardar" onclick="GuardarRegistros()">Guardar</button>
-                    <button type="button" class="btn btnCancelar" data-bs-dismiss="modal"
-                            onclick="LimpiarModal()">Cancelar</button>
-                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="GuardarRegistros()">Guardar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal"
+                        onclick="LimpiarModal()">Cancelar</button>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Boton Modal -->
-    <div class="btnAgregar">
-        <button type="button" class="btn btn-secondary btn-circle btn-lg d-flex" style="padding-bottom: 2px;"
-                title="Agregar" data-bs-toggle="modal" data-bs-target="#modalProvincias" data-bs-target="#staticBackdrop"
-                onclick="NuevoRegistro()">
-            <i class="fa-solid fa-plus mt-1"></i>
-            <h5 style="margin-left: 3px; padding-top: 1px;" class="textBtnAgregar">Nuevo Servicio</h5>
-        </button>
-    </div>
+<!-- Boton Modal -->
+<div class="btnAgregar">
+    <button type="button" class="btn btn-secondary btn-circle btn-lg d-flex" style="padding-bottom: 2px;"
+            title="Agregar" data-bs-toggle="modal" data-bs-target="#modalServicios" data-bs-target="#staticBackdrop"
+            onclick="NuevoRegistro()">
+        <i class="fa-solid fa-plus mt-1"></i>
+        <h5 style="margin-left: 3px; padding-top: 1px;" class="textBtnAgregar">Nuevo Servicio</h5>
+    </button>
+</div>
 
-    <!-- Tabla -->
-    <div class="card m-4">
-        @* <div class="card-header">
+<!-- Tabla -->
+<div class="card m-4">
+    @* <div class="card-header">
             <div class="row">
                 <div class="col-auto">
                     <div class="input-group m-2">
@@ -79,24 +94,24 @@
                     </div>
                 </div>
             </div> *@
-            <div class="card-body">
-                <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
-                    <table class="table table-striped mt-1" id="imprimir-tabla">
-                        <thead>
-                            <tr>
-                                <th scope="col" style="text-align: center">NOMBRE</th>
-                                <th scope="col" style="text-align: center">DESCRIPCION</th>
-                                <th scope="col" style="text-align: center">PRECIO</th>
-                                <th scope="col"></th>
-                                <th scope="col"></th>
-                            </tr>
-                        </thead>
-                        <tbody id="tbody-provincias"></tbody>
-                    </table>
-                </div>
-            </div>
+    <div class="card-body">
+        <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+            <table class="table table-striped mt-1" id="imprimir-tabla">
+                <thead>
+                    <tr>
+                        <th scope="col" style="text-align: center">NOMBRE</th>
+                        <th scope="col" style="text-align: center">DESCRIPCION</th>
+                        <th scope="col" style="text-align: center">PRECIO</th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody id="tbody-servicios"></tbody>
+            </table>
         </div>
+    </div>
+</div>
 
-        @section Scripts {
-            <script src="~/js/servicios.js"></script>
-        }
+@section Scripts {
+    <script src="~/js/servicios.js"></script>
+}
