@@ -92,7 +92,60 @@ public class ServiciosController : Controller
     }
 
 
+    public JsonResult DesactivarServicio(int ServicioID)
+    {
+        bool eliminado = false;
 
+        var existeServicio = _context.Servicios
+            .Where(s => s.ServicioID == ServicioID).Count();
+
+        var existeTurno = _context.Turnos
+            .Any(t => t.ServicioID == ServicioID);
+
+        if (existeServicio > 0 && !existeTurno)
+        {
+            var desactivarServicio = _context.Servicios.Find(ServicioID);
+            desactivarServicio.Eliminado = true;
+            _context.SaveChanges();
+
+            eliminado = true;
+        }
+
+        return Json(eliminado);
+    }
+
+    public JsonResult ActivarServicio(int ServicioID)
+    {
+        bool eliminado = true;
+
+        var existeServicio = _context.Servicios.Where(s => s.ServicioID == ServicioID).Count();
+
+        if (existeServicio > 0)
+        {
+            var activarServicio = _context.Servicios.Find(ServicioID);
+            activarServicio.Eliminado = false;
+            _context.SaveChanges();
+            eliminado = false;
+        }
+
+        return Json(eliminado);
+    }
+
+    public JsonResult EliminarServicio(int ServicioID)
+    {
+        bool eliminado = false;
+
+        var existeTurno = _context.Turnos.Where(e => e.ServicioID == ServicioID).Count();
+
+        if (existeTurno == 0)
+        {
+            var eliminarServicio = _context.Servicios.Find(ServicioID);
+            _context.Remove(eliminarServicio);
+            _context.SaveChanges();
+            eliminado = true;
+        }
+        return Json(eliminado);
+    }
 
 
 
