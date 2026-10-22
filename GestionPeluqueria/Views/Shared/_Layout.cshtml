@@ -87,7 +87,7 @@ aria-controls="navbarSupportedContent"
                     <span>Inicio</span>
                 </a>
 
-                <a asp-controller="Turnos" asp-action="Index" class="sidebar-item">
+                <a class="sidebar-item" href="~/Turnos/NuevoTurno">
                     <span class="sidebar-icon"><i class="fa-solid fa-calendar-days"></i></span>
                     <span>Turnos</span>
                 </a>
@@ -108,7 +108,7 @@ aria-controls="navbarSupportedContent"
 
 
         <!-- Page content -->
-        <div id="page-content-wrapper">
+        <div id="page-content-wrapper" class="d-flex flex-column">
 
             <!-- Navbar -->
             <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
@@ -130,7 +130,7 @@ aria-controls="navbarSupportedContent"
 
 
             <!-- Contenido -->
-            <div class="container-fluid">
+            <div class="container-fluid flex-grow-1">
 
                 <main role="main" class="pb-3">
 

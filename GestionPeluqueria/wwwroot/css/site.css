@@ -168,3 +168,26 @@ body {
   }
 
 }
+
+#page-content-wrapper {
+  width: 100%;
+  min-width: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+#page-content-wrapper>.container-fluid {
+  flex: 1 0 auto;
+}
+
+#page-content-wrapper main {
+  padding-bottom: 30px;
+}
+
+#page-content-wrapper footer {
+  position: static;
+  width: 100%;
+  flex-shrink: 0;
+  margin-top: auto;
+}

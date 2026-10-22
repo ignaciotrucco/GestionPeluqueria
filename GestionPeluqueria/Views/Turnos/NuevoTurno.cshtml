@@ -1,0 +1,130 @@
+@{
+    ViewData["Title"] = "Nuevo turno";
+}
+
+<div class="container-fluid">
+    <h2 class="mb-4">Nuevo turno</h2>
+
+    <form id="formularioTurno">
+        <input type="hidden" id="ClienteID" value="0" />
+
+        <!-- DATOS DEL CLIENTE -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fa-solid fa-user me-2"></i> Datos del cliente
+            </div>
+
+            <div class="card-body">
+                <div class="row g-3 align-items-end">
+                    <div class="col-md-6">
+                        <label for="DNI" class="form-label">DNI</label>
+                        <input type="text" id="DNI" class="form-control" placeholder="Ingresá el DNI" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <button type="button" id="btnBuscarCliente" class="btn btn-primary w-100">
+                            Buscar cliente
+                        </button>
+                    </div>
+                </div>
+
+                <div id="mensajeCliente" class="alert d-none mt-3 mb-0"></div>
+
+                <!-- Se muestra únicamente si el cliente no existe -->
+                <div id="formularioCliente" class="mt-4" style="display:none;">
+                    <h5>Registrar nuevo cliente</h5>
+
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="NombreCompleto" class="form-label">
+                                Nombre completo
+                            </label>
+                            <input type="text" id="NombreCompleto" class="form-control" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="FechaNacimiento" class="form-label">
+                                Fecha de nacimiento
+                            </label>
+                            <input type="date" id="FechaNacimiento" class="form-control" />
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="Telefono" class="form-label">Teléfono</label>
+                            <input type="tel" id="Telefono" class="form-control" placeholder="Ej: 5493562123456"
+                                   required />
+                            <small class="text-muted">
+                                Ingresá el número con código de país y área, sin + ni espacios.
+                            </small>
+                        </div>
+
+                        <div class="col-md-6">
+                            <label for="Email" class="form-label">Email</label>
+                            <input type="email" id="Email" class="form-control" />
+                        </div>
+
+                        <div class="col-12">
+                            <label for="ObservacionesCliente" class="form-label">
+                                Observaciones
+                            </label>
+                            <textarea id="ObservacionesCliente" class="form-control"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- DATOS DEL TURNO -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <i class="fa-solid fa-calendar-check me-2"></i> Datos del turno
+            </div>
+
+            <div class="card-body">
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label for="ServicioID" class="form-label">Servicio</label>
+                        @Html.DropDownList("ServicioID", null, htmlAttributes: new { @class = "form-control" })
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="Fecha" class="form-label">Fecha</label>
+                        <input type="date" id="Fecha" class="form-control" />
+                    </div>
+
+                    <div class="col-md-3">
+                        <label for="Hora" class="form-label">Hora</label>
+                        <input type="time" id="Hora" class="form-control" />
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="MontoSeña" class="form-label">Monto de seña</label>
+                        <input type="number" id="MontoSeña" class="form-control" min="0" step="0.01" value="0" />
+                    </div>
+
+                    <div class="col-12">
+                        <label for="ObservacionesTurno" class="form-label">
+                            Observaciones del turno
+                        </label>
+                        <textarea id="ObservacionesTurno" class="form-control"></textarea>
+                    </div>
+                </div>
+
+                <div id="mensajeTurno" class="alert d-none mt-3 mb-0"></div>
+            </div>
+        </div>
+
+        <button type="button" id="btnCrearTurno" class="btn btn-success">
+            <i class="fa-solid fa-check me-1"></i> Crear turno
+        </button>
+
+        <a href="@Url.Action("Index", "Home")" class="btn btn-secondary">
+            Cancelar
+        </a>
+    </form>
+</div>
+
+@section Scripts {
+    <script src="~/js/clientes.js"></script>
+    <script src="~/js/turnos.js"></script>
+}
